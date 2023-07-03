@@ -10,9 +10,11 @@ class TodoCubit extends Cubit<TodoState> {
     emit(LoadingTodoState());
     try {
       final response = await _responsitory.getAll();
+
       emit(ReponseTodoState(response));
     } catch (e) {
       emit(ErrorTodoState(e.toString()));
+      print(e.toString());
     }
   }
 }
